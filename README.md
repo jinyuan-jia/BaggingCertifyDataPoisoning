@@ -9,7 +9,7 @@ training_mnist_bagging.py is used to train models, where each of them is learnt 
 
 compute_certified_radius.py is used to compute the certified radius (refer to our Theorem 1). 
 
-You can directly run the command in the following file: ``` python3 run.py ``` 
+You can directly run the command in the following file: ```run.py ``` 
 
 # Citation 
 
