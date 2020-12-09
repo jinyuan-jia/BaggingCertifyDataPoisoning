@@ -77,7 +77,6 @@ if __name__ == "__main__":
 
     num_class = data.shape[1]-1
     num_data = data.shape[0]
-    certified_r = []
 
     certified_poisoning_size_array = np.zeros([num_data],dtype = np.int)
     delta_l, delta_s = 1e-50, 1e-50 # for simplicity, we use 1e-50 for both delta_l and delta_s, they are actually smaller than 1e-50 in these two datasets.
