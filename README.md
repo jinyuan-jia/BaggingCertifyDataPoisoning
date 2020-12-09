@@ -1,4 +1,3 @@
-# BaggingCertifyDataPoisoning
 This repository contains code for our AAAI 2021 paper "[Intrinsic Certified Robustness of Bagging against Data Poisoning Attacks](https://arxiv.org/pdf/2008.04495.pdf)".
 
 Required python tool: keras 2.3.1 (tensorflow 1.14.0 backend), numpy, scipy, statsmodels, argparse
