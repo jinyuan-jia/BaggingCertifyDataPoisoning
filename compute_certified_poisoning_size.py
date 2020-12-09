@@ -70,7 +70,7 @@ if __name__ == "__main__":
 
 
     input_file = './aggregate_result/'+args.dataset+'/k_'+args.k+'/aggregate_batch_k_'+args.k+'_start_0_end_'+args.ns+'.npz'
-    dstnpz_filepath = './aggregate_result/'+args.dataset+'/k_'+args.k+'/certified_radius_k_'+args.k+'_ns_'+args.ns+'_alpha_'+args.alpha+'_ts_10000_bg_ws.npz'
+    dstnpz_filepath = './aggregate_result/'+args.dataset+'/k_'+args.k+'/certified_poisoning_size_k_'+args.k+'_ns_'+args.ns+'_alpha_'+args.alpha+'.npz'
 
     data = np.load(input_file)['x']
 
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     num_data = data.shape[0]
     certified_r = []
 
-    certified_radius_array = np.zeros([num_data],dtype = np.int)
+    certified_poisoning_size_array = np.zeros([num_data],dtype = np.int)
     delta_l, delta_s = 1e-50, 1e-50 # for simplicity, we use 1e-50 for both delta_l and delta_s, they are actually smaller than 1e-50 in these two datasets.
     for idx in range(num_data):
         ls = data[idx][-1]
@@ -90,15 +90,15 @@ if __name__ == "__main__":
         probability_bar = np.clip(probability_bar, a_min=-1, a_max=1-pABar)
         probability_bar[ls] = pABar - delta_l
         r = CertifyRadiusBS(ls, probability_bar, int(args.k), int(args.n))
-        certified_radius_array[idx]=r
+        certified_poisoning_size_array[idx]=r
 
 
-    certified_radius_list = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100]
+    certified_poisoning_size_list = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100]
     certified_acc_list = []
 
     for radius in certified_radius_list:
-        certified_acc_list.append(  len(certified_radius_array[ np.where(certified_radius_array>=radius)])/float(data.shape[0]))
+        certified_acc_list.append(  len(certified_poisoning_size_array[ np.where(certified_poisoning_size_array>=radius)])/float(data.shape[0]))
 
-    print(certified_radius_list)
+    print(certified_poisoning_size_list)
     print(certified_acc_list)
-    np.savez(dstnpz_filepath,x=certified_radius_array)
+    np.savez(dstnpz_filepath,x=certified_poisoning_size_array)
