@@ -95,8 +95,8 @@ if __name__ == "__main__":
     certified_poisoning_size_list = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100]
     certified_acc_list = []
 
-    for radius in certified_radius_list:
-        certified_acc_list.append(  len(certified_poisoning_size_array[ np.where(certified_poisoning_size_array>=radius)])/float(data.shape[0]))
+    for radius in certified_poisoning_size_list:
+        certified_acc_list.append(  len(certified_poisoning_size_array[ np.where(certified_poisoning_size_array>=radius)])/float(num_data))
 
     print(certified_poisoning_size_list)
     print(certified_acc_list)
