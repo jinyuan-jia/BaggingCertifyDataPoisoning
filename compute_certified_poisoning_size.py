@@ -11,7 +11,6 @@ parser.add_argument("--n", type=str, default='60000')
 parser.add_argument("--ns", type=str, default='1000')
 parser.add_argument("--alpha", type=str, default='0.001')
 
-
 args = parser.parse_args()
 
 def multi_ci(counts, alpha):
