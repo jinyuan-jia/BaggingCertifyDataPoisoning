@@ -15,8 +15,7 @@ You can directly run the command in the following file: ```run.py ```
 If you use this code, please cite the following paper: 
 
 ```
-@inproceedings{
-jia2021intrinsic,
+@inproceedings{jia2021intrinsic,
 title={Intrinsic Certified Robustness of Bagging against Data Poisoning Attacks},
 author={Jinyuan Jia and Xiaoyu Cao and Neil Zhenqiang Gong},
 booktitle={AAAI},
